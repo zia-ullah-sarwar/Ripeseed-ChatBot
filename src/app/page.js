@@ -62,7 +62,7 @@ export default function Home() {
         onSubmit={handleSubmit}
       >
         <div className="flex flex-row justify-between items-center">
-          <p className="text-sm font-semibold w-[100px] text-gray-700">
+          <p className="text-sm font-semibold w-[150px] text-gray-700">
             Your text
           </p>
           <div className="relative">
@@ -89,7 +89,7 @@ export default function Home() {
               <MdPlayCircleFilled />
             </button>
           </div>
-          <p className="text-sm font-semibold w-[100px] text-gray-700">
+          <p className="text-sm font-semibold w-[150px] text-gray-700">
             Suggested text
           </p>
         </div>

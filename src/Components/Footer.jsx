@@ -7,7 +7,7 @@ const Footer = () => {
         </span>{" "}
         -{" "}
         <a
-          href="/"
+          href="mailto:info@ripseed.io"
           className="hover:underline text-xs md:text-sm  text-gray-700"
         >
           info@ripeseed.io
