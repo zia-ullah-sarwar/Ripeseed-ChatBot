@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen gap-7 bg-slate-50 p-10 md:p-24 md:pb-0">
+    <main className="flex flex-col min-h-screen gap-7 bg-slate-50 dark:bg-slate-900 p-10 md:p-24 md:pb-0">
       <Image src={Logo} alt="Picture of Logo" width={170} height={170}></Image>
 
       <form
@@ -52,7 +52,7 @@ export default function Home() {
         onSubmit={handleSubmit}
       >
         <div className="flex flex-row justify-between items-center">
-          <p className="text-sm font-semibold w-[100px] text-gray-700">
+          <p className="text-sm font-semibold w-[100px] text-gray-700 dark:text-gray-300">
             Your text
           </p>
           <div className="relative">
@@ -60,7 +60,7 @@ export default function Home() {
               <MdPlayCircleFilled />
             </button>
           </div>
-          <p className="text-sm font-semibold w-[100px] text-gray-700">
+          <p className="text-sm font-semibold w-[100px] text-gray-700 dark:text-gray-300">
             Suggested text
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function Home() {
               {clearBtnShow === true ? (
                 <>
                   <button
-                    class="text-xl p-2 absolute hover:bg-gray-200 rounded-full right-[1%] top-[2%]  text-black"
+                    class="text-xl p-2 absolute hover:bg-gray-200 dark:hover:bg-slate-700 rounded-full right-[1%] top-[2%] text-black dark:text-gray-300"
                     onClick={clickClearTextHandler}
                     data-tooltip-id="clear-btn"
                   >
@@ -93,7 +93,7 @@ export default function Home() {
                 <></>
               )}
               <textarea
-                className="bg-transparent border-none focus:outline-none resize-none w-full h-full pr-10 text-black scrollbar-thumb-[#199f87] scrollbar-rounded* scrollbar-thin scrollbar-track-gray-300"
+                className="bg-transparent border-none focus:outline-none resize-none w-full h-full pr-10 text-black dark:text-gray-300 scrollbar-thumb-[#199f87] scrollbar-rounded* scrollbar-thin scrollbar-track-gray-300"
                 value={input}
                 onChange={handleInputChange}
                 maxLength={250}
@@ -101,7 +101,7 @@ export default function Home() {
               ></textarea>
             </div>
 
-            <p className="absolute right-3 -bottom-8 text-sm  text-black">
+            <p className="absolute right-3 -bottom-8 text-sm text-black dark:text-gray-300">
               {characterCount} / 250
             </p>
           </div>
