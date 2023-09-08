@@ -14,7 +14,7 @@ const GeneratButtons = ({ content }) => {
       });
   };
   return (
-    <div className="flex justify-end bg-gray-50 w-full flex-row  gap-1 bottom-0 right-0 ">
+    <div className="flex justify-end bg-gray-50 w-full flex-row gap-1 bottom-10 right-0 ">
       <button
         className="text-xl p-2 hover:bg-gray-200 rounded-full text-black"
         data-tooltip-id="copy-btn"

@@ -107,10 +107,7 @@ export default function Home() {
           </div>
           <div className="rounded-md border-gray-300 border rounded-l-none h-96 overflow-x-hidden overflow-auto w-full relative scrollbar-thumb-[#199f87] scrollbar-rounded* scrollbar-thin scrollbar-track-gray-300">
             {aiResponses.reverse().map((m) => (
-              <div
-                key={m.id}
-                className="bg-transparent  text-black border-b-1 border-black"
-              >
+              <div key={m.id} className="bg-transparent text-black border-b-2">
                 <GeneratButtons content={m.content} />
                 <p className="p-3 pr-8 m-3 rounded-md w-full">
                   <ReactMarkdown rehypePlugins={[]}>{m.content}</ReactMarkdown>
