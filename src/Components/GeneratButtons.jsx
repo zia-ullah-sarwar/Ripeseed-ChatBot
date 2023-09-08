@@ -2,9 +2,19 @@
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { MdOutlineEmail, MdContentCopy } from "react-icons/md";
 
-const GeneratButtons = ({ content, copyToClipboard }) => {
+const GeneratButtons = ({ content }) => {
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(content)
+      .then(() => {
+        console.log("Text copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy text: ", error);
+      });
+  };
   return (
-    <div className="flex justify-end bg-gray-50 w-full flex-row py-1 gap-1 bottom-0 right-0 border-b-2">
+    <div className="flex justify-end bg-gray-50 w-full flex-row  gap-1 bottom-0 right-0 ">
       <button
         className="text-xl p-2 hover:bg-gray-200 rounded-full text-black"
         data-tooltip-id="copy-btn"
