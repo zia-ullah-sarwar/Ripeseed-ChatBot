@@ -16,7 +16,7 @@ const GeneratButtons = ({ content }) => {
   return (
     <div className="flex justify-end  w-full flex-row gap-1 bottom-10 right-0 ">
       <button
-        className="text-xl p-2 hover:bg-gray-200 rounded-full text-black"
+        className="text-xl p-2 hover:bg-gray-300 rounded-full text-black dark:text-gray-300 dark:hover:bg-gray-700 mt-3 mr-3"
         data-tooltip-id="copy-btn"
         onClick={copyToClipboard}
       >
