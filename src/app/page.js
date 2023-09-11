@@ -10,27 +10,12 @@ import { useChat } from "ai/react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function Home() {
-  const [clearBtnShow, setClearBtnShow] = useState(false);
   const { messages, input, setInput, handleInputChange, handleSubmit } =
     useChat();
 
   const ref = useRef(null);
   const characterCount = input.length;
   const aiResponses = messages.filter((m) => m.role !== "user");
-  messages[
-    {
-      role: "system",
-      content:
-        "Please convert the below text into a professional letter. You should not add anything on your own to the letter. The response should be in a professional tone and same context as the text given to you.",
-    }
-  ];
-  useEffect(() => {
-    if (input.length > 0) {
-      setClearBtnShow(true);
-    } else {
-      setClearBtnShow(false);
-    }
-  }, [input]);
 
   // useEffect(() => {
   //   ref.current?.scrollIntoView({
@@ -67,7 +52,7 @@ export default function Home() {
         <div className="flex flex-row justify-between">
           <div className="flex flex-col justify-end w-full gap-2 relative">
             <div className="rounded-md border-gray-300 border border-r-0 p-5 rounded-r-none h-96 ">
-              {clearBtnShow === true ? (
+              {input.length > 0 && (
                 <>
                   <button
                     class="text-xl p-2 absolute hover:bg-gray-200 dark:hover:bg-slate-700 rounded-full right-[1%] top-[2%] text-black dark:text-gray-300"
@@ -89,8 +74,6 @@ export default function Home() {
                     }}
                   />
                 </>
-              ) : (
-                <></>
               )}
               <textarea
                 className="bg-transparent border-none focus:outline-none resize-none w-full h-full pr-10 text-black dark:text-gray-300 scrollbar-thumb-[#199f87] scrollbar-rounded* scrollbar-thin scrollbar-track-gray-300"
@@ -109,7 +92,7 @@ export default function Home() {
             {aiResponses.reverse().map((m) => (
               <div key={m.id} className="bg-transparent text-black border-b-2">
                 <GeneratButtons content={m.content} />
-                <p className="p-3 pr-8 m-3 rounded-md w-full">
+                <p className="p-3 pr-8 m-3 rounded-md w-full dark:text-gray-300">
                   <ReactMarkdown rehypePlugins={[]}>{m.content}</ReactMarkdown>
                 </p>
               </div>
