@@ -10,19 +10,40 @@ import { useChat } from "ai/react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function Home() {
-  const { messages, input, setInput, handleInputChange, handleSubmit } =
-    useChat();
+  const [openaiKey, setOpenaiKey] = useState(null);
+  const { messages, input, setInput, handleInputChange, handleSubmit, error } =
+    useChat({
+      headers: { "x-openai-key": openaiKey },
+      onError: (error) => {
+        let key;
+        if (
+          error?.message.includes(
+            "OPENAI_API_KEY environment variable is missing or empty"
+          )
+        ) {
+          key = window.prompt("Paste your OpenAI API key here");
+        } else if (error?.message.includes("Incorrect API key provided")) {
+          key = window.prompt(
+            "Incorrect API key provided. Please enter a valid API key"
+          );
+        }
+        localStorage.setItem("OPENAI_API_KEY", key);
+        setOpenaiKey(key);
+      },
+    });
 
   const ref = useRef(null);
   const characterCount = input.length;
   const aiResponses = messages.filter((m) => m.role !== "user");
 
-  // useEffect(() => {
-  //   ref.current?.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "end",
-  //   });
-  // }, [aiResponses]);
+  useEffect(() => {
+    let key = localStorage.getItem("OPENAI_API_KEY");
+    setOpenaiKey(key);
+    while (!key) {
+      key = window.prompt("Please provide OpenAI API key to proceed");
+      localStorage.setItem("OPENAI_API_KEY", key);
+    }
+  }, []);
 
   const clickClearTextHandler = () => {
     setInput("");
